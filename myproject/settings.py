@@ -145,6 +145,10 @@ except ImportError:
     pass
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://dogsound.store',
+]
+
+CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1",
     "http://54.180.14.177",
     "http://dogsound.store",
