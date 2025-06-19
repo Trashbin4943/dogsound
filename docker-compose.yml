@@ -2,7 +2,7 @@ version: '3'
 services:
     web:
         image: server
-        container_name: sever_box
+        container_name: server_box
         command: bash -c "gunicorn myproject.wsgi:application -b 0.0.0.0:8000" # 서버 실행
         ports:
             - '8000:8000'
