@@ -24,7 +24,7 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','54.180.14.177', 'dogsound.store']
 
@@ -40,6 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+	'allauth',
+	'allauth.account',
+	'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +57,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+CSRF_COOKIE_SECURE = False
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -134,3 +144,9 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1",
+    "http://54.180.14.177",
+    "http://dogsound.store",
+]
