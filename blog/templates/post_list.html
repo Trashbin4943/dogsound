@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Community</title>
+        <link rel="stylesheet" href="{% static 'css/post_list.css' %}" />
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="title">아무 개소리나 적고 튀기</h2>
+
+            <div class="top-bar">
+                <a href="{% url 'login' %}" class="logout-button">로그아웃</a>
+                <a href="{% url 'create_post' %}" class="write-button">글쓰기</a>
+            </div>
+
+            <ul class="post-list">
+                {% for post in posts %}
+                <li class="post-item">
+                    <a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }} </a>
+                    <span class="meta"> | {{ post.date }} | 작성자: {{ post.author.username }} </span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>

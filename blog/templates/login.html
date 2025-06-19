@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로그인</title>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    </head>
+    <body>
+        <div class="login-container">
+            <h2 class="login-title">로그인</h2>
+            <a href="{% url 'signup' %}" class="signup-link">회원가입</a>
+
+            <form method="post" class="login-form">
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit" class="login-button">로그인</button>
+            </form>
+        </div>
+    </body>
+</html>
